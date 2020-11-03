@@ -5,4 +5,11 @@
 //  Created by Денис Каратеев on 31.10.2020.
 //
 
-import Foundation
+// MARK: - WelcomeElement
+struct CountrData: Codable {
+    let name: String
+    
+
+}
+typealias Country1 = [CountrData]
+

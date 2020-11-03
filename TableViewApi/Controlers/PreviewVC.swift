@@ -35,6 +35,7 @@ class PreviewVC: UIViewController {
         privewlabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
      //   privewlabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         print("didload")
+     //   CityElement(name: <#T##String#>)
        
     }
     override func viewWillLayoutSubviews() {

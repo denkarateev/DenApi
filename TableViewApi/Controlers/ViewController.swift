@@ -10,8 +10,10 @@ protocol MyProtol {
     func number(indexPath: Int) -> Int
 }
 class ViewController: UIViewController{
-    
+ //   var networkWeatherManager = Network()
+  
     private var viewTable = UITableView()
+    var name2 = "Russia"
     override func viewDidLoad() {
         super.viewDidLoad()
         viewTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -20,13 +22,46 @@ class ViewController: UIViewController{
         //
         self.viewTable.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         self.view.addSubview(viewTable)
-        print("didload")
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+      
+    }
+//    func updateInterfaceWith(weather: ModelData) {
+//        DispatchQueue.main.async {
+//            
+//            self.name2 = weather.name
+//            print(self.name2)
+//        }
+//    }
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        
+        if indexPath.row == 2 {
+//
+        }
         if indexPath.row == 3 {
-            UIApplication.shared.openURL(URL(string: "https://api.instagram.com/oauth/authorize?client_id=990602627938098&redirect_uri=https://socialsizzle.herokuapp.com/auth/&scope=user_profile,user_media&response_type=code")!)
-        } else {
+            
+//            guard let url = URL(string: "https://restcountries.eu/rest/v2/name/\(self.name)") else { return }
+//            let sesion  = URLSession.shared
+//            sesion.dataTask(with: url) { (data, response, error) in
+//                if let response = response {
+//                    print(response)
+//                }
+//                guard let data = data else { return }
+//                print(data)
+//                do {
+//                    let json = try JSONDecoder().decode(City.self, from: data)
+//
+//                    print(json)
+//                } catch {
+//                    print(error)
+//                }
+//            }.resume()
+           // print(name)
+        } else if indexPath.row == 4 {
+            
+            self.navigationController?.pushViewController(GetViewController(), animated: true)
+        } else   {
             self.navigationController?.pushViewController(PreviewVC(text: "\(indexPath.row)", nibName: nil, bundle: nil), animated: true)
         }
     }
@@ -43,8 +78,15 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
-        cell.imageView?.image = UIImage(named: "lamba")
-        cell.textLabel?.text = "\(indexPath.row)"
+        if indexPath.row == 4 {
+            
+            cell.imageView?.image = UIImage(named: "lamba")
+            cell.textLabel?.text = "Parse json"
+        } else {
+            cell.imageView?.image = UIImage(named: "lamba")
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
+       
         
         return cell
     }
