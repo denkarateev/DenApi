@@ -6,98 +6,121 @@
 //
 
 import UIKit
-protocol MyProtol {
-    func number(indexPath: Int) -> Int
-}
-class ViewController: UIViewController{
- //   var networkWeatherManager = Network()
-  
-    private var viewTable = UITableView()
-    var name2 = "Russia"
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var models: [CountrData]
+    
+    private let interactor: NetworService
+    var viewTable = UITableView()
+    var network = NetworService()
+        init(interactor: NetworService) {
+                self.interactor = interactor
+                self.models = []
+           
+                super.init(nibName: nil, bundle: nil)
+            }
+    
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    
+    
     override func viewDidLoad() {
+      
         super.viewDidLoad()
+        self.interactor.fetch(number: 4) {  modelData in
+            DispatchQueue.main.async {
+                do {
+                     self.models = try modelData.get()
+                    self.viewTable.reloadData()
+                   
+                  } catch {
+                      print(error.localizedDescription)
+                  }
+            }
+            
+        }
+        
+       
+       
+        print(self.models.count)
         viewTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.viewTable.dataSource = self
         self.viewTable.delegate = self
         //
         self.viewTable.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         self.view.addSubview(viewTable)
-        
-      
     }
-//    func updateInterfaceWith(weather: ModelData) {
-//        DispatchQueue.main.async {
-//            
-//            self.name2 = weather.name
-//            print(self.name2)
-//        }
-//    }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        
         if indexPath.row == 2 {
-//
         }
         if indexPath.row == 3 {
             
-//            guard let url = URL(string: "https://restcountries.eu/rest/v2/name/\(self.name)") else { return }
-//            let sesion  = URLSession.shared
-//            sesion.dataTask(with: url) { (data, response, error) in
-//                if let response = response {
-//                    print(response)
-//                }
-//                guard let data = data else { return }
-//                print(data)
-//                do {
-//                    let json = try JSONDecoder().decode(City.self, from: data)
-//
-//                    print(json)
-//                } catch {
-//                    print(error)
-//                }
-//            }.resume()
-           // print(name)
+            //
         } else if indexPath.row == 4 {
             
-            self.navigationController?.pushViewController(GetViewController(), animated: true)
+            navigationController?.pushViewController(GetViewController(), animated: true)
         } else   {
-            self.navigationController?.pushViewController(PreviewVC(text: "\(indexPath.row)", nibName: nil, bundle: nil), animated: true)
+            navigationController?.pushViewController(PreviewVC(text: "\(indexPath.row)", nibName: nil, bundle: nil), animated: true)
         }
     }
-    deinit {
-        print("deinit")
-    }
-   
-}
-
-extension ViewController: UITableViewDataSource {
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        self.interactor.fetch(number: 4) {  modelData in
+
+            do {
+                 self.models = try modelData.get()
+               
+              } catch {
+                  print(error.localizedDescription)
+              }
+        }
+        return self.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         if indexPath.row == 4 {
-            
+            cell.labelCountry.text = "vdvfvdf"
+            cell.labelCountry.frame = CGRect(x: 0, y: 0, width: 100, height: 0)
             cell.imageView?.image = UIImage(named: "lamba")
+            cell.imageView?.layer.cornerRadius = 20
+            cell.imageView?.clipsToBounds = true
             cell.textLabel?.text = "Parse json"
         } else {
+            self.interactor.fetch(number: indexPath.row) {  modelData in
+                DispatchQueue.main.async {
+                    do {
+                        try cell.textLabel?.text = modelData.get()[indexPath.row].name
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            
+            cell.imageView?.layer.cornerRadius = 20
+            cell.imageView?.clipsToBounds = true
             cell.imageView?.image = UIImage(named: "lamba")
-            cell.textLabel?.text = "\(indexPath.row)"
         }
-       
         
         return cell
     }
-   
     
-}
-// MARK: Delegate
-extension ViewController: UITableViewDelegate {
+    
+    
+    // MARK: Delegate
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(70.0)
+        return CGFloat(80.0)
     }
+    
     
 }
 

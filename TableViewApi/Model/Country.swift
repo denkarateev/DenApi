@@ -6,9 +6,13 @@
 //
 
 import Foundation
+
 class Country {
-    let name: String
-    init?(Country: Country1) {
-        name = Country[0].name
+    var name: String?
+    init?(Country: [CountrData]) {
+       
+        if let name = Country.first?.name {
+            self.name = name
+        }
     }
 }

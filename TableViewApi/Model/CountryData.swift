@@ -6,10 +6,12 @@
 //
 
 // MARK: - WelcomeElement
+
 struct CountrData: Codable {
     let name: String
+    let capital: String
+    let flag: String
     
-
+    
 }
-typealias Country1 = [CountrData]
 

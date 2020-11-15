@@ -12,7 +12,6 @@
 		2F5EE2452551B285007F5DBF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EE2442551B285007F5DBF /* Country.swift */; };
 		2F64B68F2548A4FB00F4F5D2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2F64B68E2548A4FB00F4F5D2 /* .gitignore */; };
 		2F64B6922548B5F600F4F5D2 /* GetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64B6912548B5F600F4F5D2 /* GetViewController.swift */; };
-		2F64B69B2548C90C00F4F5D2 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64B69A2548C90C00F4F5D2 /* ModelData.swift */; };
 		2F6591EF253E0FB500616878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6591EE253E0FB500616878 /* AppDelegate.swift */; };
 		2F6591F1253E0FB500616878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6591F0253E0FB500616878 /* SceneDelegate.swift */; };
 		2F6591F3253E0FB500616878 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6591F2253E0FB500616878 /* ViewController.swift */; };
@@ -22,9 +21,9 @@
 		2F6591FE253E0FB800616878 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591FC253E0FB800616878 /* LaunchScreen.storyboard */; };
 		2F659207253E14F300616878 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F659206253E14F300616878 /* TableViewCell.swift */; };
 		2F65920A253E181100616878 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F659209253E181100616878 /* PreviewVC.swift */; };
+		2F6F44C5255DC6B70005021C /* SelectCityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F44C4255DC6B70005021C /* SelectCityInteractor.swift */; };
 		2FBF8E29254DB0BE0034C972 /* CountryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF8E28254DB0BE0034C972 /* CountryData.swift */; };
 		2FBF8E2F254DC8670034C972 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF8E2E254DC8670034C972 /* CurrentWeatherData.swift */; };
-		2FBF8E32254DCD9D0034C972 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF8E31254DCD9D0034C972 /* Pokemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		2F5EE2442551B285007F5DBF /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		2F64B68E2548A4FB00F4F5D2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2F64B6912548B5F600F4F5D2 /* GetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetViewController.swift; sourceTree = "<group>"; };
-		2F64B69A2548C90C00F4F5D2 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		2F6591EB253E0FB500616878 /* TableViewApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6591EE253E0FB500616878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F6591F0253E0FB500616878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,9 +43,9 @@
 		2F6591FF253E0FB800616878 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F659206253E14F300616878 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		2F659209253E181100616878 /* PreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
+		2F6F44C4255DC6B70005021C /* SelectCityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityInteractor.swift; sourceTree = "<group>"; };
 		2FBF8E28254DB0BE0034C972 /* CountryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryData.swift; sourceTree = "<group>"; };
 		2FBF8E2E254DC8670034C972 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
-		2FBF8E31254DCD9D0034C972 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				2F5615B02549FDA800BB1FE6 /* NetworService.swift */,
-				2FBF8E31254DCD9D0034C972 /* Pokemon.swift */,
 				2FBF8E2E254DC8670034C972 /* CurrentWeatherData.swift */,
 				2FBF8E28254DB0BE0034C972 /* CountryData.swift */,
-				2F64B69A2548C90C00F4F5D2 /* ModelData.swift */,
+				2F6F44C4255DC6B70005021C /* SelectCityInteractor.swift */,
 				2F5EE2442551B285007F5DBF /* Country.swift */,
 			);
 			path = Model;
@@ -194,13 +191,12 @@
 				2F5615B4254A0A1900BB1FE6 /* ViewController+alertController.swift in Sources */,
 				2F659207253E14F300616878 /* TableViewCell.swift in Sources */,
 				2F65920A253E181100616878 /* PreviewVC.swift in Sources */,
-				2F64B69B2548C90C00F4F5D2 /* ModelData.swift in Sources */,
 				2FBF8E29254DB0BE0034C972 /* CountryData.swift in Sources */,
 				2F6591F3253E0FB500616878 /* ViewController.swift in Sources */,
+				2F6F44C5255DC6B70005021C /* SelectCityInteractor.swift in Sources */,
 				2F64B6922548B5F600F4F5D2 /* GetViewController.swift in Sources */,
 				2F6591EF253E0FB500616878 /* AppDelegate.swift in Sources */,
 				2FBF8E2F254DC8670034C972 /* CurrentWeatherData.swift in Sources */,
-				2FBF8E32254DCD9D0034C972 /* Pokemon.swift in Sources */,
 				2F6591F9253E0FB500616878 /* TableViewApi.xcdatamodeld in Sources */,
 				2F6591F1253E0FB500616878 /* SceneDelegate.swift in Sources */,
 				2F5615B12549FDA800BB1FE6 /* NetworService.swift in Sources */,
