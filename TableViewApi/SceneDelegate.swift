@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController(interactor: NetworService())
+		let networkService = NetworkService()
+		let countriesService = CountriesService(networkService: networkService)
+        let viewController = CountriesViewController(interactor: countriesService)
         window.rootViewController = viewController
         window.makeKeyAndVisible()
         window.windowScene = scene

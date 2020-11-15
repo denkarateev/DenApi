@@ -14,7 +14,7 @@ class GetViewController: UIViewController {
     var get = UIButton(frame: .zero)
     var name = UILabel()
     var flagImage = UIImageView()
-    var net = NetworService()
+    var net = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
