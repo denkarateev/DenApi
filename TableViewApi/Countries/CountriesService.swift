@@ -55,7 +55,7 @@ final class CountriesService: CountriesServiceProtocol {
 	}
 
 	func getFlag(for name: String, _ completion: @escaping (UIImage?) -> Void) {
-		networkService.loadData(urlString: "todo") { [weak self] result in
+		networkService.loadData(urlString: name) { [weak self] result in
 			if let data = try? result.get(), let image = UIImage(data: data) {
 				self?.cache.setObject(image, forKey: NSString(string: name)) // сохранять картинки по урлу
 				return completion(image)

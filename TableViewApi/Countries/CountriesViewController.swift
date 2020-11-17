@@ -8,9 +8,8 @@
 import UIKit
 
 class CountriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    var network = NetworkService()
     private var models: [CountrData]
-  //  private var weather: CurrentWeatherData
     private let service: CountriesServiceProtocol
    
 	var viewTable = UITableView()
@@ -71,14 +70,18 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.labelCapital.text = "Capital: \(model.capital)"
 		cell.imageView?.layer.cornerRadius = 20
 		cell.imageView?.clipsToBounds = true
-		cell.imageView?.image = UIImage(named: "lamba")
-//		if let image = service.cachedImage(for: model.name) {
-//			cell.imageView?.image = image
-//		} else {
-//			service.getFlag(for: model.name) { [weak cell] image in
-//				cell?.imageView?.image = image ?? UIImage(named: "lamba")
-//			}
-//		}
+		//cell.imageView?.image = UIImage(named: "lamba")
+        network.loadData(urlString: "https://www.tcso-zuzino.com/wp-content/uploads/2020/11/4343.png") { data in
+            DispatchQueue.main.async {
+                do {
+                    cell.imageView?.image = try UIImage(data: data.get())
+                
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+        }
         return cell
     }
 
