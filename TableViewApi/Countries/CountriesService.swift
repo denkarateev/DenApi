@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVGKit
 
 protocol CountriesServiceProtocol {
 
@@ -13,7 +14,10 @@ protocol CountriesServiceProtocol {
 
 	func getFlag(for name: String, _ completion: @escaping (UIImage?) -> Void)
 
-	func cachedImage(for name: String) -> UIImage?
+	func loadImage(from path: String, completion: @escaping (SVGKImage?) -> Void)
+
+	func cachedImage(for name: String) -> SVGKImage?
+
     func getWeatherForCity(cityName: String, _ completion: @escaping (CurrentWeatherData) -> Void)
 }
 
@@ -64,7 +68,19 @@ final class CountriesService: CountriesServiceProtocol {
 		}
 	}
 
-	func cachedImage(for name: String) -> UIImage? {
+	func cachedImage(for name: String) -> SVGKImage? {
 		return nil
+	}
+
+	func loadImage(from path: String, completion: @escaping (SVGKImage?) -> Void) {
+
+		networkService.loadData(urlString: path) { result in
+			DispatchQueue.main.async {
+				if let data = try? result.get() {
+					return completion(SVGKImage(data: data))
+				}
+				return completion(nil)
+			}
+		}
 	}
 }

@@ -11,7 +11,5 @@ struct CountrData: Codable {
     let name: String
     let capital: String
     let flag: String
-   
-    
 }
 

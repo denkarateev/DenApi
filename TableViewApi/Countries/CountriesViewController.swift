@@ -63,32 +63,18 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
         return models.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
-        
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+		let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
+
 		let model = models[indexPath.row]
-      //  weather.name = model.name
-        
-		//cell.textLabel?.text = model.name
-        cell.labelCountry.text = "Country: \(model.name)"
-        cell.labelCapital.text = "Capital: \(model.capital)"
-//        let namSvgImgVar: SVGKImage = SVGKImage(named: "afg")
-//        cell.image2.image = namSvgImgVar.uiImage
-       // cell.image2.image = UIImage(named: "lamba")
-//        network.loadData(urlString: "https://restcountries.eu/data/afg.svg") { data in
-//            DispatchQueue.main.async {
-//                do {
-//                    cell.image2.image = try SVGKImage(data: data.get()) 
-//                    cell.activity.stopAnimating()
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//            }
-//
-//        }
-        return cell
-    }
+		cell.labelCountry.text = "Country: \(model.name)"
+		cell.labelCapital.text = "Capital: \(model.capital)"
+		service.loadImage(from: model.flag) { image in
+			cell.image2.image = image?.uiImage
+		}
+		return cell
+	}
 
     // MARK: Delegate    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
