@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
+import SVGKit
 class CountriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
     var network = NetworkService()
     private var models: [CountrData]
     private let service: CountriesServiceProtocol
@@ -17,7 +18,7 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
 	init(interactor: CountriesServiceProtocol) {
 		self.service = interactor
 		self.models = []
-       // weather = .init(from: Decoder)
+       
         super.init(nibName: nil, bundle: nil)
 	}
 
@@ -29,6 +30,8 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
       
         super.viewDidLoad()
+        self.navigationController?.title = "Country"
+        viewTable.tableHeaderView = .init()
         service.getCountries() { countries in
 			self.models = countries
 			self.viewTable.reloadData()
@@ -38,6 +41,8 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
         viewTable.delegate = self
         viewTable.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
         view.addSubview(viewTable)
+      
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -68,20 +73,20 @@ class CountriesViewController: UIViewController, UITableViewDataSource, UITableV
 		//cell.textLabel?.text = model.name
         cell.labelCountry.text = "Country: \(model.name)"
         cell.labelCapital.text = "Capital: \(model.capital)"
-		cell.imageView?.layer.cornerRadius = 20
-		cell.imageView?.clipsToBounds = true
-		//cell.imageView?.image = UIImage(named: "lamba")
-        network.loadData(urlString: "https://www.tcso-zuzino.com/wp-content/uploads/2020/11/4343.png") { data in
-            DispatchQueue.main.async {
-                do {
-                    cell.imageView?.image = try UIImage(data: data.get())
-                
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            
-        }
+//        let namSvgImgVar: SVGKImage = SVGKImage(named: "afg")
+//        cell.image2.image = namSvgImgVar.uiImage
+       // cell.image2.image = UIImage(named: "lamba")
+//        network.loadData(urlString: "https://restcountries.eu/data/afg.svg") { data in
+//            DispatchQueue.main.async {
+//                do {
+//                    cell.image2.image = try SVGKImage(data: data.get()) 
+//                    cell.activity.stopAnimating()
+//                } catch {
+//                    print(error.localizedDescription)
+//                }
+//            }
+//
+//        }
         return cell
     }
 

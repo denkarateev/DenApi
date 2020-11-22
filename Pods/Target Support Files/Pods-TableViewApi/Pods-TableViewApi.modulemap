@@ -1,0 +1,6 @@
+framework module Pods_TableViewApi {
+  umbrella header "Pods-TableViewApi-umbrella.h"
+
+  export *
+  module * { export * }
+}
